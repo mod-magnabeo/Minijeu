@@ -1,0 +1,11 @@
+name: MiniJeu
+version: 1.0
+author: Wolf_IV
+main: com.Wolf_IV.MiniJeu.MainJ
+commands: 
+  startjeu:
+    description: Starts Jeu
+    permission: startjeu.use
+  setteam:
+    description: Set Team
+    permission: setteam.use
