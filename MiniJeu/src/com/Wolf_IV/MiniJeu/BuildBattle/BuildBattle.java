@@ -3,6 +3,7 @@ package com.Wolf_IV.MiniJeu.BuildBattle;
 import java.util.Random;
 
 import org.bukkit.Bukkit;
+import org.bukkit.GameMode;
 import org.bukkit.Location;
 
 import com.Wolf_IV.MiniJeu.MainJ;
@@ -29,7 +30,9 @@ public class BuildBattle {
 			TeamC.getTeam(i).setLoc(new Location(Bukkit.getWorld("worldSpawn"), 750*i, y, z));
 			TeamC.getTeam(i).locTp();
 			teamNub[i]=i;
-			
+			for(int i2=1; i2<=4;i2++) {
+				TeamC.getTeam(i).getPlayer(i2).setGameMode(GameMode.CREATIVE);
+			}
 		}
 		
 		for(int i=rand.nextInt(50)+20; i != 0; i--) {

@@ -17,6 +17,12 @@ public class TeamC {
 			return CStart.team4;
 		}else if(x==5 && CStart.team5 != null) {
 			return CStart.team5;
+		}else if(x==6 && CStart.team6 != null) {
+			return CStart.team6;
+		}else if(x==7 && CStart.team7 != null) {
+			return CStart.team7;
+		}else if(x==8 && CStart.team8 != null) {
+			return CStart.team8;
 		}
 		return null;
 		

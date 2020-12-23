@@ -20,8 +20,8 @@ import com.Wolf_IV.MiniJeu.Command.CStart;
 import com.Wolf_IV.MiniJeu.Team.TeamC;
 
 public class BuildTimer extends BukkitRunnable{
-	public int timeS = 10;
-	public int timeM = 0;
+	public int timeS = 0;
+	public int timeM = 5;
 	public static boolean vote=false;
 	public static boolean constru=false;
 	public static int voteT = 0;
@@ -46,7 +46,7 @@ public class BuildTimer extends BukkitRunnable{
 			WizUHCb=true;
 		}
 		if(timeM==0 && timeS<=0 ) {
-			timeS=5;
+			timeS=45;
 			if(vote==false) {
 				phase = "§eVote";
 			vote=true;

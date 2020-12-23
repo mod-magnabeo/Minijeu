@@ -1,8 +1,11 @@
 package com.Wolf_IV.MiniJeu.Team;
 
+import java.io.IOException;
+
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
+import com.Wolf_IV.MiniJeu.HikaBrain.HikaTimer;
 
 public class Team {
 	protected String teamName;
@@ -10,6 +13,9 @@ public class Team {
 	protected boolean[] playerVoted =new boolean[6];
 	protected Location warp =null;
 	protected int coins =0;
+	protected boolean inHikaBrain = false;
+	protected boolean HikaPtsBrain = false;
+	protected HikaTimer HikaTimer;
 
 	public void setTeam(String player, String player2, String player3, String player4, String teamName) {
 		Bukkit.broadcastMessage("salut");
@@ -49,10 +55,15 @@ public class Team {
 	}
 	
 	public void locTp() {
-		getPlayer(1).teleport(this.warp);
-		getPlayer(2).teleport(this.warp);
-		getPlayer(3).teleport(this.warp);
-		getPlayer(4).teleport(this.warp);
+		for(int i=0; i<=4; i++) {
+			try {
+			getPlayer(i).teleport(this.warp);
+			getPlayer(i).setHealth(20.0F);
+			}catch(Exception e){
+				
+			}
+			
+		}
 	}
 	//New
 	public int getNumPlayer(Player player) {
@@ -84,5 +95,13 @@ public class Team {
 	
 	public void setPlayerVote(int playNub, boolean vote) {
 		playerVoted[playNub]=vote;
+	}
+	
+	
+	public void setHikaTimer(HikaTimer hika) {
+		this.HikaTimer = hika;
+	}
+	public HikaTimer getHikaTimer() {
+		return this.HikaTimer;
 	}
 }

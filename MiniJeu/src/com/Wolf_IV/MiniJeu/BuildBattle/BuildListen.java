@@ -32,25 +32,25 @@ public class BuildListen implements Listener {
 		}
 	}
 
-	/*@EventHandler
+	@EventHandler
 	public static void moveEvent(PlayerMoveEvent event) {
 		if(BuildTimer.constru == false) {
 			return;
 		}
 		Player player = event.getPlayer();
-		for(int i=1; i<=CStart.nubTeamC;i++) {
-			if(TeamC.getTeam(i).isPlayerHere(player)) {
-				int x = TeamC.getTeam(i).getLoc().getBlockX();
-				int z = TeamC.getTeam(i).getLoc().getBlockZ();
-				if(x > x+200 || x < x-200 || z > z+200 || z < z-200) {
-					player.teleport(TeamC.getTeam(i).getLoc());
+		
+			if(TeamC.getTeamWithPlayer(player).getNumPlayer(player) != 0) {
+				int x = TeamC.getTeamWithPlayer(player).getLoc().getBlockX();
+				int z = TeamC.getTeamWithPlayer(player).getLoc().getBlockZ();
+				int xp = player.getLocation().getBlockX();
+				int zp = player.getLocation().getBlockZ();
+				if(xp > x+200 || xp < x-200 || zp > z+200 || zp < z-200) {
+					player.teleport(TeamC.getTeamWithPlayer(player).getLoc());
 					player.sendMessage("§aVa pas si loin");
-					event.setCancelled(true); 
 					return;
 				}
-			}
 		}
-	}*/
+	}
 	
 	@EventHandler
 	public static void clickEvent(PlayerInteractEvent event) {

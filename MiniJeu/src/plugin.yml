@@ -9,3 +9,6 @@ commands:
   setteam:
     description: Set Team
     permission: setteam.use
+  supchest:
+    description: Sup Chest
+    permission: supchest.use

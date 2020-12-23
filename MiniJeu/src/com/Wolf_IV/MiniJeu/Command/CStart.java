@@ -8,12 +8,15 @@ import org.bukkit.entity.Player;
 
 import com.Wolf_IV.MiniJeu.MainJ;
 import com.Wolf_IV.MiniJeu.BuildBattle.BuildBattle;
+import com.Wolf_IV.MiniJeu.HikaBrain.HikaBrain;
+import com.Wolf_IV.MiniJeu.HungerGame.HungerChest;
+import com.Wolf_IV.MiniJeu.HungerGame.HungerGame;
 import com.Wolf_IV.MiniJeu.Team.Team;
 import com.Wolf_IV.MiniJeu.Team.TeamC;
 
 public class CStart implements CommandExecutor {
 
-	public static int nubTeam = 5;
+	public static int nubTeam = 8;
 	public static int nubTeamC = 0;
 	//public static Team[] team =new Team[nubTeam+1];
 	public static Team team1 =new Team();
@@ -21,6 +24,9 @@ public class CStart implements CommandExecutor {
 	public static Team team3 =new Team();
 	public static Team team4 =new Team();
 	public static Team team5 =new Team();
+	public static Team team6 =new Team();
+	public static Team team7 =new Team();
+	public static Team team8 =new Team();
 	private MainJ main;
 	public CStart(MainJ mainJ) {
 		this.main= mainJ;
@@ -40,15 +46,17 @@ public class CStart implements CommandExecutor {
 					}
 					for(int i2=1; i2<=4;i2++) {
 						if(TeamC.getTeam(i).getTeamName() != null) {
-						Bukkit.broadcastMessage(TeamC.getTeam(i).getPlayerName(i2));
+						//Bukkit.broadcastMessage(TeamC.getTeam(i).getPlayerName(i2));
 						
 						}else {
-							Bukkit.broadcastMessage("end");
+							//Bukkit.broadcastMessage("end");
 						}
 					}
 				}
-				BuildBattle buildBattle =new BuildBattle();
-				buildBattle.start(main);
+				HungerGame hungerGame = new HungerGame(main);
+				//HikaBrain hikaBrain =new HikaBrain(main);
+				/*BuildBattle buildBattle =new BuildBattle();
+				buildBattle.start(main);*/
 				return true;
 			}
 		}
