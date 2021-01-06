@@ -13,6 +13,7 @@ import com.Wolf_IV.MiniJeu.HungerGame.HungerChest;
 import com.Wolf_IV.MiniJeu.HungerGame.HungerGame;
 import com.Wolf_IV.MiniJeu.Team.Team;
 import com.Wolf_IV.MiniJeu.Team.TeamC;
+import com.Wolf_IV.MiniJeu.CoinView;
 
 public class CStart implements CommandExecutor {
 
@@ -53,6 +54,8 @@ public class CStart implements CommandExecutor {
 						}
 					}
 				}
+
+				//CoinView.create();
 				HungerGame hungerGame = new HungerGame(main);
 				//HikaBrain hikaBrain =new HikaBrain(main);
 				/*BuildBattle buildBattle =new BuildBattle();
@@ -61,6 +64,10 @@ public class CStart implements CommandExecutor {
 			}
 		}
 		return false;
+	}
+	private Object CoinView() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

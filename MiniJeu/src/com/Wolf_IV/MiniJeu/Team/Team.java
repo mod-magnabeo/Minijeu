@@ -13,6 +13,7 @@ public class Team {
 	protected boolean[] playerVoted =new boolean[6];
 	protected Location warp =null;
 	protected int coins =0;
+	protected int clas = 0;
 	protected boolean inHikaBrain = false;
 	protected boolean HikaPtsBrain = false;
 	protected HikaTimer HikaTimer;
@@ -103,5 +104,13 @@ public class Team {
 	}
 	public HikaTimer getHikaTimer() {
 		return this.HikaTimer;
+	}
+	
+	public void setClas(int set) {
+		this.clas = set;
+	}
+	
+	public int getClas() {
+		return this.clas;
 	}
 }
