@@ -21,7 +21,7 @@ public class HungerChest {
 	static Random rand = new Random();
 	public static void setLoc(HungerGame hug) {
 		for(int i=0; i<=hug.chestnub; i++) {
-			int dist = 100;
+			int dist = HungerGame.spaceS;
 			int x =rand.nextInt(dist*2)-dist;
 			int z =rand.nextInt(dist*2)-dist;
 			int y;
@@ -51,7 +51,8 @@ public class HungerChest {
 		}
 	}
 	public static void invCon(Inventory inv) {
-		
+		int max = 4;
+		boolean empty = true;
 		for(int n =0; n<=26; n++) {
 			try{
 		ItemStack[] mat = new ItemStack[100];
@@ -59,8 +60,8 @@ public class HungerChest {
 		mat[2]=new Armor().create();
 		mat[3]=new Projectiles().create();
 		mat[4]=new Miscellaneous().create();
-		
-		inv.setItem(n, mat[rand.nextInt(4)+1]);
+		ItemStack item = mat[rand.nextInt(max)+1];
+		inv.setItem(n, item);
 			}catch(Exception e) {
 				
 			}

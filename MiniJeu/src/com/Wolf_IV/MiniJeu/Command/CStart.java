@@ -16,7 +16,7 @@ import com.Wolf_IV.MiniJeu.Team.TeamC;
 import com.Wolf_IV.MiniJeu.CoinView;
 
 public class CStart implements CommandExecutor {
-
+	public static int gTime = 0;
 	public static int nubTeam = 8;
 	public static int nubTeamC = 0;
 	//public static Team[] team =new Team[nubTeam+1];
@@ -54,12 +54,31 @@ public class CStart implements CommandExecutor {
 						}
 					}
 				}
-
-				//CoinView.create();
-				HungerGame hungerGame = new HungerGame(main);
+				gTime++;
+				CoinView.create();
 				//HikaBrain hikaBrain =new HikaBrain(main);
-				/*BuildBattle buildBattle =new BuildBattle();
-				buildBattle.start(main);*/
+				//BuildBattle buildBattle =new BuildBattle();
+				//buildBattle.start(main);
+				if(gTime == 1) {
+				HungerGame hungerGame = new HungerGame(main);
+				}else if(gTime == 2) {
+					BuildBattle buildBattle =new BuildBattle();
+					buildBattle.start(main);
+				}else if(gTime == 3) {
+					BuildBattle buildBattle =new BuildBattle();
+					buildBattle.start(main);
+				}else if(gTime == 4) {
+					HikaBrain hikaBrain =new HikaBrain(main);
+				}else if(gTime == 5) {
+					BuildBattle buildBattle =new BuildBattle();
+					buildBattle.start(main);
+				}else {
+					CoinView.win();
+				}
+				
+				
+				
+				
 				return true;
 			}
 		}

@@ -1,22 +1,58 @@
 package com.Wolf_IV.MiniJeu;
 
+import java.util.ArrayList;
+import java.util.Collections;
+
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.entity.ArmorStand;
 
 import com.Wolf_IV.MiniJeu.Command.CStart;
+import com.Wolf_IV.MiniJeu.Team.Team;
 import com.Wolf_IV.MiniJeu.Team.TeamC;
 
 public class CoinView {
+	public static Team tOrder[] = new Team[CStart.nubTeamC+1+1];
 	static int[] tClass = new int[CStart.nubTeam+1];
 	static int test = 0;
 	static ArmorStand stand;
 	static int glass;
 	public static void create() {
-		TeamC.getTeam(1).setCoins(250);
-		TeamC.getTeam(2).setCoins(200);
-		TeamC.getTeam(3).setCoins(400);
-		TeamC.getTeam(4).setCoins(300);
+		ArrayList<Integer> points = new ArrayList<Integer>();
+		points.add(1);
+		int order[] = new int[CStart.nubTeamC+1+1];
+		
+		for(int i = 1 ; i<=CStart.nubTeamC; i++) {
+			points.add(i, TeamC.getTeam(i).getCoins());
+		}
+		Collections.sort(points);
+		int o = 1;
+		for(int i = CStart.nubTeamC ; i>=1; i--) {
+			order[o] = points.get(i);
+			o++;
+		}
+		
+		Bukkit.broadcastMessage("§6TOP TEAM");
+		Bukkit.broadcastMessage("§6--------------");
+		for(int i = 1 ; i<=CStart.nubTeamC; i++) {
+			for(int ordre : order) {
+				if(TeamC.getTeam(i).getCoins() == ordre) {
+				tOrder[i] = TeamC.getTeam(i);
+				Bukkit.broadcastMessage("§a"+i+": §b"+TeamC.getTeam(i).getTeamName()+" §5"+ordre+" points");
+			}
+			}
+		}
+		Bukkit.broadcastMessage("§6--------------");
+	}
+
+
+	public static void win() {
+		Bukkit.broadcastMessage("§6VICTOIRE DE L'EQUIPE "+tOrder[1]);
+		Location loc =new Location(Bukkit.getWorld("worldSpawn"), 30000, 84, 3010);
+		tOrder[1].setLoc(loc);
+		tOrder[1].locTp();
+	}
+}
 		/*[14:04:45 INFO]: i1 tClas1
 		[14:04:45 INFO]: i2 tClas2
 		[14:04:45 INFO]: i3 tClas3
@@ -47,7 +83,7 @@ public class CoinView {
 		[14:04:46 INFO]: i1 tClas1
 		[14:04:46 INFO]: i4 tClas4
 		[14:04:46 INFO]: i1 tClas1*/
-		if(stand != null) {
+		/*if(stand != null) {
 			int[] tClas = new int[CStart.nubTeam+1];
 			for(int i=1;i<=CStart.nubTeamC;i++) {
 				tClas[i]=i;
@@ -92,7 +128,7 @@ public class CoinView {
 		}else {
 			/*for(int i=1;i<=CStart.nubTeamC;i++) {
 				tClas[i]=i;
-			}*/
+			}*//*
 		Location loc =new Location(Bukkit.getWorld("worldSpawn"), 30005, 80, 3000);
 		ArmorStand as = (ArmorStand) loc.getWorld().spawn(loc, ArmorStand.class);
         as.setGravity(false);
@@ -102,10 +138,9 @@ public class CoinView {
         as.setVisible(false);
         //as.setPassenger(player);
 		stand = as;
-		}
+		}*/
 		
-	}
-}
+
 /*ScoreboardManager scoreM = Bukkit.getScoreboardManager();
 Scoreboard score = scoreM.getNewScoreboard();
 Objective o= score.registerNewObjective("coins", "teamClass");

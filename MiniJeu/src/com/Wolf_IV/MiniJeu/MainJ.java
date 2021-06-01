@@ -9,6 +9,7 @@ import com.Wolf_IV.MiniJeu.Command.CSetTeam;
 import com.Wolf_IV.MiniJeu.Command.CStart;
 import com.Wolf_IV.MiniJeu.Command.CSupChest;
 import com.Wolf_IV.MiniJeu.HikaBrain.HikaListen;
+import com.Wolf_IV.MiniJeu.HungerGame.HungerListen;
 import com.Wolf_IV.MiniJeu.Team.Team;
 
 public class MainJ extends JavaPlugin implements Listener{
@@ -24,5 +25,6 @@ public class MainJ extends JavaPlugin implements Listener{
 	
 	getServer().getPluginManager().registerEvents(new BuildListen(), this);
 	getServer().getPluginManager().registerEvents(new HikaListen(), this);
+	getServer().getPluginManager().registerEvents(new HungerListen(), this);
 	}
 }

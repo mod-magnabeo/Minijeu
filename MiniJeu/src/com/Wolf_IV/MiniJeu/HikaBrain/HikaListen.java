@@ -141,7 +141,6 @@ public class HikaListen implements Listener {
 				event.setCancelled(true);
 			}*/
 			if(player.getLocation().getY() < 240) {
-				
 				kill(player);
 				return;
 			}else if(ploc1.getBlock().getType() == Material.DIAMOND_BLOCK && team == team.getHikaTimer().t1) {

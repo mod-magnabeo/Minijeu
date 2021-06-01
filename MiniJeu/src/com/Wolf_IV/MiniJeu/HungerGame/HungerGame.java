@@ -11,7 +11,10 @@ import com.Wolf_IV.MiniJeu.HungerGame.Item.HItem;
 public class HungerGame {
 	private MainJ main;
 
-	public static int chestnub = 150;
+	public static int chestnub = 250;
+	public static int spaceS = 200;
+	public static int spaceF = 50;
+	public static int borderT = 250;
 	public Location[] chestLoc = new Location[chestnub+2];
 	public HungerGame(MainJ mainJ) {
 		this.main= mainJ;
@@ -24,7 +27,7 @@ public class HungerGame {
 		    
 			o++;
 			Bukkit.broadcastMessage(o+" = "+pET[o].getName());
-			
+			 
 		}
 		Bukkit.broadcastMessage("num = "+o);*/
 		Bukkit.broadcastMessage("Les coffre on etait crée");
@@ -34,7 +37,7 @@ public class HungerGame {
 		
 		HungerTimer tasks =new HungerTimer(this);
 		tasks.runTaskTimer(main, 0, 20);
-		
+		HungerListen.start();
 
 	}
 }

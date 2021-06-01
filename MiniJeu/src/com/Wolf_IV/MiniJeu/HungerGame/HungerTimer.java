@@ -15,9 +15,10 @@ import com.Wolf_IV.MiniJeu.Team.TeamC;
 
 public class HungerTimer extends BukkitRunnable {
 	boolean ingame = false;
+	static boolean stop = false;
 	int timeS = 0;
-	int timeM = 0;
-	int start = 10;
+	int timeM = 20;
+	static int start = 10;
 	String timeA = "0:0";
 	private HungerGame hungerGame;
 	public HungerTimer(HungerGame hungerGame) {
@@ -26,27 +27,25 @@ public class HungerTimer extends BukkitRunnable {
 
 	@Override
 	public void run() {
+		if(stop == true) {
+			cancel();
+		}
 		if(start != 0) {
 			start--;
 			Bukkit.broadcastMessage("§aLa partie commence dans "+start);
-			for(int i=1;i<=CStart.nubTeamC;i++) {
-				TeamC.getTeam(i).locTp();
-			}
 			return;
 		}
-		if(timeS == 59) {
-			timeM++;
-			timeS=0;
+		if(timeS == 0) {
+			timeM--;
+			timeS=59;
 		}else {
 			timeS--;
 		}
 		if(timeM == 10 && timeS==0) {
-			
+			Bukkit.getServer().dispatchCommand(Bukkit.getConsoleSender(), "worldborder set "+HungerGame.spaceF+" "+HungerGame.borderT);
 		}
 		if((timeS == 0 && timeM == 0) || timeM < 0) {
-			/**
-			 * TODO Ne pas oublier le supp a la fin
-			 */
+			HungerListen.win(null);
 		}
 		timeA = timeM+":"+timeS;
 		
@@ -61,7 +60,7 @@ public class HungerTimer extends BukkitRunnable {
 		
 		Objective o = score.registerNewObjective("Debut", "Pvp");
 		o.setDisplaySlot(DisplaySlot.SIDEBAR);
-		o.setDisplayName("§aHuger§eGame");
+		o.setDisplayName("§aHunger§eGame");
 		Score temps = o.getScore("§bTemps restant: "+timeA);
 		//Score debut2 = o.getScore("voir le temps écoulrré");
 		Score pvp = o.getScore("§aBordur 10 min");
